@@ -1,0 +1,6 @@
+---
+- name: Swap for server
+  hosts: server
+  become: yes
+  roles:
+    - swap

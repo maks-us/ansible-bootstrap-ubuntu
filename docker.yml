@@ -1,0 +1,12 @@
+---
+- hosts: all
+  user: maks
+  become: yes
+  become_user: root
+  become_method: sudo
+  roles:
+    - angstwad.docker_ubuntu
+
+  tasks:
+  - name: add maks to docker group
+    user: name=maks groups=sudo,docker

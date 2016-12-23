@@ -4,4 +4,9 @@
   with_items:
     - vim
     - mc
+    - nano
+    - htop
+    - git-core
+    - curl
+    - mysql-client
 

@@ -1,0 +1,6 @@
+---
+- name: Install monit
+  action: apt pkg={{ item }} state=installed
+  with_items:
+    - monit
+    - logwatch
