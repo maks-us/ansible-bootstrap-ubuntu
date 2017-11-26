@@ -25,3 +25,8 @@
       prompt: "Add user to sudoers group (y/n)"
       default: 'n'
       private: no
+
+    - name: "docker_group"
+      prompt: "Add user to docker group (y/n)"
+      default: 'n'
+      private: no

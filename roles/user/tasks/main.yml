@@ -1,6 +1,6 @@
 ---
 - name: Add or update user and set password
-  action: user name={{ username }} password={{ password }} shell=/bin/bash
+  action: user name={{ username }} password={{ password }} shell=/bin/bash generate_ssh_key=yes ssh_key_bits=4096
 
 - name: Change user directory permissions to 750
   file: path=/home/{{ username }} state=directory mode=750
@@ -17,3 +17,9 @@
   action: lineinfile dest=/etc/sudoers regexp="{{ username }} ALL" line="{{ username }} ALL=(ALL) ALL" state=absent
   when: sudoers == 'n' 
 
+- name: Add user to docker group 
+  action: group name=docker state=present
+  when: docker_group == 'y'
+
+- name: Add user to docker group 
+  action: user name={{ username }} append=yes groups=docker 

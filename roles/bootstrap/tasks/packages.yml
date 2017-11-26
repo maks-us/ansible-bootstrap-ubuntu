@@ -9,4 +9,5 @@
     - git-core
     - curl
     - mysql-client
+    - python3-pip
 

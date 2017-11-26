@@ -4,9 +4,42 @@
   become: yes
   become_user: root
   become_method: sudo
-  roles:
-    - angstwad.docker_ubuntu
+#  roles:
+#    - dochang.docker
 
   tasks:
+  - name: Install https transport
+    apt: pkg=apt-transport-https state=present
+
+  - name: Install ssl certificate app
+    apt: pkg=ca-certificates state=present
+
+  - name: Add encription key 
+    apt_key: keyserver=keyserver.ubuntu.com id=36A1D7869245C8950F966E92D8576A8BA88D21E9
+
+  - name: Add apt-get repository
+    command: echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
+
+  - name: Update pakages
+    apt: update_cache=yes
+
+#  - name: Install docker dependency 1
+#    command: apt-get install linux-image-extra-4.4.0-57-generic -Y
+
+  - name: Install docker dependency 2
+    apt: pkg=linux-image-extra-virtual state=present
+
+#  - name: Install docker engine 
+#    apt: pkg=docker-engine state=present 
+
+#  - name: Install docker 
+#    apt: pkg=docker state=present 
+
+  - name: Install docker-composer 
+    apt: pkg=docker-compose state=present
+
+  - name: Run docker server 
+    service: name=docker state=started
+
   - name: add maks to docker group
     user: name=maks groups=sudo,docker

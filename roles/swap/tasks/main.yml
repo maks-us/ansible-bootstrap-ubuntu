@@ -1,6 +1,6 @@
 ---
 - name: Create swap space
-  command: dd if=/dev/zero of=/extraswap bs=1M count=4096
+  command: dd if=/dev/zero of=/extraswap bs=1M count={{ swap_size }}
   when: ansible_swaptotal_mb < 1
 
 - name: Make swap

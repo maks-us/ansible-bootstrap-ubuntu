@@ -2,6 +2,21 @@
 - name: Update APT package cache
   action: apt update_cache=yes
 
+- name: Install aptitude
+  action: apt pkg=aptitude state=present
+
+- name: Install https transport 
+  action: apt pkg=apt-transport-https state=present 
+
+- name: Install ssl certificate app
+  action: apt pkg=ca-certificates state=present
+
+#- name: Install docker.io
+#  action: apt pkg=docker.io state=present
+
+#- name: Install docker-compose
+#  action: apt pkg=docker-compose state=present
+
 - name: Upgrade APT to the lastest packages
   action: apt upgrade=safe
 
