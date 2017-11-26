@@ -1,2 +1,3 @@
 [server]
 127.0.0.1
+139.59.128.214 host_name="weather-04.maks.us" swap_size='2048'
