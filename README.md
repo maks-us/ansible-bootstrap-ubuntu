@@ -1,3 +1,7 @@
+ansible-playbook -i hosts -u root  swap.yml
+ansible-playbook -i hosts -u root  user.yml
+ansible-playbook -i hosts -u maks --ask-sudo  bootstrap.yml
+
 # Boostrapping and securing an Ubuntu server 
 
 This repository contains [Ansible](http://ansible.com) scripts for bootstrapping and securing an Ubuntu server.
